@@ -36,7 +36,7 @@ async def bin(Client, message):
                     elif int(bin[0]) in waste_cards:
                         await msg.edit_text("Invalid Card")
                     else:
-                        req = requests.get("https://adyen-enc-and-bin-info.herokuapp.com/bin/" + bin)
+                        req = requests.get(f"https://lookup.binlist.net/" + bin)
                         if req.status_code == requests.codes.ok and 'result":true' in req.text:
                             jsontext =  json.loads(req.text)
                             text = f"""
